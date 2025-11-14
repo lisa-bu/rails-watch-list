@@ -17,16 +17,20 @@
   }
 }
 
-.card-body{
-  background-color: rgb(179, 179, 126);
-  flex: 1;
-  .card-text{
-    color: black
-  }
-  .p{
-    color: black;
-  }
+.container h1 {
+  color: white;
 }
+
+// .card-body{
+//   background-color: rgb(228, 177, 206);
+//   flex: 1;
+//   .card-text{
+//     color: black
+//   }
+//   .p{
+//     color: black;
+//   }
+// }
 
 .cards {
   display: grid;
@@ -34,17 +38,10 @@
   grid-gap: 16px;
   height: 400px;
   grid-auto-rows: 1fr;
-  .card {
-    display: flex;
-    flex-direction: column;
-  }
-
-  img {
-    width: 100%;
-    height: 300px; // Fixed height for all posters
-    object-fit: cover; // Maintains aspect ratio
-    object-position: top; // Shows the top of the poster
-  }
+  // .card {
+  //   display: flex;
+  //   flex-direction: column;
+  // }
 }
 
  p {
@@ -54,6 +51,14 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .card-btn-bottom {
+    bottom: 16px;
+  }
+
+  .card-btn-right {
+    right: 16px;
   }
 
 // Smallest device

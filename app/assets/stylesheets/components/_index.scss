@@ -5,3 +5,10 @@
 @import "navbar";
 @import "cards";
 @import "banner";
+
+body {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i.imgflip.com/8d317n.png?a489696);
+  background-repeat: no-repeat;
+  background-position: center center; /* Optional: adjust image position */
+  background-size: cover;
+}

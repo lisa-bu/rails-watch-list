@@ -1,15 +1,35 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i.imgflip.com/8d317n.png?a489696);">
+<div class="banner">
   <div class="container">
     <h1> Save your movies</h1>
-    <%= link_to "Create a movie list", new_list_path, class: "btn btn-flat" %>
+    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#newListModal">Create a movie list</button>
+  </div>
+</div>
+<div class="modal fade" id="newListModal" tabindex="-1" aria-labelledby="newListModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newListModalLabel">Create a new Movie List</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @list do |f| %>
+          <%= f.input :name %>
+          <%= f.input :photo, as: :file %>
+          <%= f.submit 'Submit', class: 'btn btn-info' %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 <div class="container">
   <h1>My Lists</h1>
   <div class="cards">
     <% @lists.each do |list| %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+      <div class="card-category position-relative" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= list.photo.attached? ? cl_image_path(list.photo.key) : asset_path('film-white-background.jpg') %>');">
         <%= link_to list.name, list_path(list) %>
+        <%= link_to "Delete", list_path(list),
+            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+            class: "btn btn-sm btn-danger mt-auto position-absolute card-btn-bottom card-btn-right" %>
       </div>
     <% end %>
   </div>
