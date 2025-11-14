@@ -1,0 +1,25 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i.imgflip.com/8d317n.png?a489696);">
+  <div class="container">
+    <h1 class="p-2"><%= @list.name %></h1>
+    <%= link_to "Add a movie",  new_list_bookmark_path(@list), class: "btn btn-info" %>
+    <%= link_to "Go back", lists_path, class: "btn btn-info"  %>
+  </div>
+  <div class="container mt-5">
+    <div class="cards">
+      <% @list.bookmarks.each do |bookmark| %>
+        <div class="card">
+          <%= image_tag bookmark.movie.poster_url %>
+          <div class="card-body">
+            <h5 class="card-title"><%= bookmark.movie.title %> - <%= bookmark.movie.rating.round(1) %> &#11088</h5>
+            <p><%= bookmark.movie.overview %></p>
+            <h4>Reviews:</h4>
+            <p class="card-text"> - <%= bookmark.comment %></p>
+            <%= link_to "Delete", bookmark_path(bookmark),
+            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+            class: "btn btn-sm btn-outline-danger mt-auto" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
